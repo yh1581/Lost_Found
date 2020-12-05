@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 let session = require('express-session');
 
 var indexRouter = require('./routes/index');
-var mainRouter = require('./routes/main');
-var signUpRouter = require('./routes/signUp')
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register')
 var errorRouter = require('./routes/error')
 
 var app = express();
@@ -31,8 +31,8 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/error', errorRouter)
-app.use('/main', mainRouter);
-app.use('/signUp', signUpRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
