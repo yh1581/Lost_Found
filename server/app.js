@@ -1,15 +1,9 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 let session = require('express-session');
-
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
-var registerRouter = require('./routes/register')
-var errorRouter = require('./routes/error')
 
 var app = express();
 
@@ -17,7 +11,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -29,10 +22,12 @@ app.use(session({
     saveUninitialized: true,
 }))
 
-app.use('/', indexRouter);
-app.use('/error', errorRouter)
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
+app.use('/', require('./routes/index'));
+app.use('/error', require('./routes/error'))
+
+app.use('/main', require('./routes/main'));
+app.use('/login', require('./routes/login'))
+app.use('/register', require('./routes/register'));
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

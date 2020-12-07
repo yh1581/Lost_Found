@@ -33,7 +33,7 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="footer">
-                    <button type="submit" className="btn">
+                    <button type="button" className="btn">
                         회원가입
                     </button>
                 </div>

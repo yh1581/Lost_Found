@@ -1,5 +1,5 @@
 {
-  "name": "login-register",
+  "name": "server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,8 +15,6 @@
     "express-session": "^1.17.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "mysql": "^2.17.1",
-    "nodemon": "^2.0.6",
-    "static-favicon": "^2.0.0-alpha"
+    "mysql": "^2.17.1"
   }
 }

@@ -5,21 +5,21 @@ let bcrypt = require('bcrypt-nodejs');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  return res.render('index', { title: '로그인' });
+  return res.render('login', { title: '로그인' });
 });
 
 /* 로그인 기능 */
 router.post('/', (req, res) => {
   let { username, password } = req.body;
   // db에서 사용자가 입력한 아이디를 조회한다.
-  db.mysql.query('SELECT * FROM user_info WHERE username=?', username, (err, userInfo) => {
+  db.mysql.query('SELECT * FROM users WHERE username=?', username, (err, result) => {
     // 만약 사용자 정보가 입력한 아이디가 존재하지 않은 경우 에러페이지를 보여준다.
-    if (err || !userInfo[0]) {
+    if (err || !result[0]) {
       return res.render('error', { message: "에러" })
     }
     /* bcrypt.comrare라는 함수를 사용해 사용자가 입력한 비밀번호와 db에 암호화 되어있는 비밀번호를 비교해서 참이면 로그인
        아니면 에러페이지에 message를 가지고 가서 띄어준다. */
-    bcrypt.compare(password, userInfo[0].password, (err, tf) => {
+    bcrypt.compare(password, result[0].password, (err, tf) => {
       if (tf !== true) {
         return res.render('error', { message: "아이디 또는 비밀번호를 확인해주세요." })
       } else {

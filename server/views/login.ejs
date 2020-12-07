@@ -10,12 +10,12 @@
 
 <body>
 <!-- index라우터로 post요청을 보낸다. -->
-    <form action="/" method="post">
+    <form action="/login" method="POST">
         <label>로그인</label><br>
         <input type="text" name="username" placeholder="username"><br>
-        <input type="password" name="password" placeholder="password"><br>
+        <input type="text" name="password" placeholder="password"><br>
         <button type="submit">로그인</button>
-        <button type="button" onclick="location.href='signUp'">계정생성</button>
+        <button type="button" onclick="location.href='register'">계정생성</button>
     </form>
 </body>
 
