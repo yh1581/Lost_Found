@@ -12,10 +12,10 @@ let mysql = mySql.createConnection(info)
 
 mysql.connect((error)=> {
     if(error){
-        console.log("DB 연동 실패 : ", error)
+        console.log("Mysql Connect failed!!!: ", error)
     }
     else {
-        console.log("DB 연동 성공!")
+        console.log("Mysql Connected...")
     }
 })
 
