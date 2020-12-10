@@ -12,17 +12,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(session({
+    secret: 'secretkey',
+    resave: false,
+    saveUninitialized: true,
+    cookie:{
+        secure: true,
+        maxAge: 60 * 30000
+    }
+}))
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-    secret: 'secretkey',
-    resave: false,
-    saveUninitialized: true,
-}))
 
 app.use('/', require('./routes/index'));
 app.use('/error', require('./routes/error'))

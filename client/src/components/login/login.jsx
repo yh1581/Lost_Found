@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 class Login extends React.Component {
     constructor(props) {
         super(props);
+        if(Cookies.get('user')) window.location='/';
         this.state = { username: "", password: "" };
     }
 
@@ -18,7 +19,7 @@ class Login extends React.Component {
         axios.post('http://localhost:3001/login',this.state)
         .then((response)=>{
             if(response.data == 1){
-                Cookies.set('user', 1, { expires: 1 });
+                Cookies.set('user', e.username, { expires: 1 });
                 window.location='/';
             }
         })

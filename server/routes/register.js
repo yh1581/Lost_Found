@@ -22,11 +22,13 @@ router.post('/', (req, res, next) => {
         // err에서는 입력한 아이디가 이미 db상에서 존재하는 경우에 발생한다.
         if (err) {
             console.log(err)
-            return res.render('error', { message: "이미 존재하는 이이디 입니다" })
+            // return res.render('error', { message: "이미 존재하는 이이디 입니다" })
+            return res.end('0');
         }
         else {
         // 아이디가 db에 저장되어 있지 않는 경우라면 회원가입을 완료한뒤에 로그인페이지로 이동한다.
-            return res.redirect('/')
+            // return res.redirect('/')
+            return res.end('1');
         }
     })
 })

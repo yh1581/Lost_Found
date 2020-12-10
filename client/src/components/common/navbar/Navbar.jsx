@@ -2,19 +2,6 @@ import React from 'react';
 
 import './Navbar.css';
 import Cookies from 'js-cookie';
-import axios from 'axios';
-
-// async function is_logined() {
-//   await axios.get('http://localhost:3001/main')
-//     .then((response) => {
-//       console.log(response.data);
-//       return response.data;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     })
-//   return 0;
-// }
 
 const Navbar = () => {
   if (Cookies.get('user')) {
