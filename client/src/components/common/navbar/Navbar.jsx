@@ -1,25 +1,23 @@
 import React from 'react';
 
 import './Navbar.css';
+import Cookies from 'js-cookie';
 import axios from 'axios';
 
-async function is_logined() {
-  await axios.get('http://localhost:3001/main')
-    .then((response) => {
-      console.log(response.data);
-      if (response.data == 1) {
-        return 1;
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  return 0;
-}
+// async function is_logined() {
+//   await axios.get('http://localhost:3001/main')
+//     .then((response) => {
+//       console.log(response.data);
+//       return response.data;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     })
+//   return 0;
+// }
 
 const Navbar = () => {
-  console.log(is_logined());
-  if (is_logined()) {
+  if (Cookies.get('user')) {
     return (
       <section className="navbar">
         <a href="/lost" className="navbar-item">내 분실물</a>

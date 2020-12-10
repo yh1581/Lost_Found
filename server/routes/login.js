@@ -37,11 +37,11 @@ router.post('/', (req, res) => {
   })
 })
 
-/* /logout으로 post요청이 오면 로그인 상태를 해제한다.  */
-router.post('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
-    return res.redirect('/')
-  })
-})
+// /* /logout으로 post요청이 오면 로그인 상태를 해제한다.  */
+// router.post('/logout', (req, res, next) => {
+//   req.session.destroy((err) => {
+//     return res.redirect('/')
+//   })
+// })
 
 module.exports = router;

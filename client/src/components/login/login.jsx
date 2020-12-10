@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginImg from './login.png';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 class Login extends React.Component {
     constructor(props) {
@@ -12,29 +13,19 @@ class Login extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
     
-    submitHandler = (e)=> {
+    submitHandler = (e)=>{
         e.preventDefault();
         axios.post('http://localhost:3001/login',this.state)
         .then((response)=>{
-            console.log(response.data);
-            if(response.data==='1'){
-                //메인페이지로
+            if(response.data == 1){
+                Cookies.set('user', 1, { expires: 1 });
+                window.location='/';
             }
         })
         .catch((error)=>{
             console.log(error);
         });
     }
-
-    // callAPI() {
-    //     fetch("http://localhost:3001/login")
-    //         .then(res => res.text())
-    //         .then(res => this.setState({ text: res }));
-    // }
-
-    // componentWillMount() {
-    //     this.callAPI();
-    // }
 
     render() {
         const { username, password } = this.state;

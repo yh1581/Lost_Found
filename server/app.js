@@ -28,8 +28,9 @@ app.use('/', require('./routes/index'));
 app.use('/error', require('./routes/error'))
 
 app.use('/main', require('./routes/main'));
-app.use('/login', require('./routes/login'))
+app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
+app.use('/logout', require('./routes/logout'));
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
