@@ -9,7 +9,7 @@ class Login extends React.Component {
         if(Cookies.get('user')) window.location='/';
         this.state = { username: "", password: "" };
     }
-    //
+    
     changeHandler = (e)=>{
         this.setState({[e.target.name]: e.target.value})
     }
