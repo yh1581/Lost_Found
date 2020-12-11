@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
+package-lock
 ### Node ###
 # Logs
 logs
@@ -48,7 +49,8 @@ jspm_packages/
 # TypeScript v1 declaration files
 typings/
 
-# TypeScript cache
+# TypeScript
+ cache
 *.tsbuildinfo
 
 # Optional npm cache directory
@@ -61,7 +63,8 @@ typings/
 .rpt2_cache/
 .rts2_cache_cjs/
 .rts2_cache_es/
-.rts2_cache_umd/
+.rts2_cache_umd
+/
 
 # Optional REPL history
 .node_repl_history
@@ -90,9 +93,11 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
+# Comment in
+ the public line in if your project uses Gatsby and not Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
+
 
 # vuepress build output
 .vuepress/dist
