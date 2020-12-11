@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 let session = require('express-session');
+var MySQLStore = require("express-mysql-session")(session);
+require('dotenv').config();
 
 var app = express();
 
@@ -13,13 +15,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(session({
+    key: 'session_cookie',
     secret: 'secretkey',
     resave: false,
     saveUninitialized: true,
-    cookie:{
-        secure: true,
-        maxAge: 60 * 30000
-    }
+    store: new MySQLStore({
+        host : process.env.DB_HOST,
+        user : process.env.DB_USER,
+        password : process.env.DB_PASS,
+        database : process.env.DATABASE
+    }),
 }))
 app.use(logger('dev'));
 app.use(bodyParser.json());

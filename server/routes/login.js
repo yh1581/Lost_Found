@@ -31,6 +31,9 @@ router.post('/', (req, res) => {
            true 값을 저장하는 이유는 만약 로그인 상태가 아닐경우 로그인 페이지로 이동되게하게끔 하기위해 만든 변수다. */
         // return res.redirect('/main')
         req.session.is_logined=true;
+        req.session.username=result[0].username;
+        req.session.student_id=result[0].student_id;
+        req.session.email=result[0].email;
         return res.end('1');
       }
     })
